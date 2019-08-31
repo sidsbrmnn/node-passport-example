@@ -1,0 +1,11 @@
+mixin link(href, name)
+  li.nav-item(class!=attributes.class)
+    a.nav-link(href=href)= name
+
+nav.navbar.navbar-dark.bg-dark.navbar-expand-lg
+  a.navbar-brand(href="/") App
+  .collapse.navbar-collapse
+    ul.navbar-nav
+      if isAuthenticated
+        +link('/profile', user.name || user.email)
+        +link('/logout', 'Logout')

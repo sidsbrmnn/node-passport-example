@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  section.py-5.container
+    .row
+      .col-md-6.mx-auto
+        form(action="/login", method="post")
+          .form-group
+            label(for="email") Email
+            input.form-control#email(type="email", name="email", placeholder="your-name@domain.com")
+          .form-group
+            label(for="password") Password
+            input.form-control#password(type="password", name="password", placeholder="********")
+          button.btn.btn-primary(type="submit") Submit
