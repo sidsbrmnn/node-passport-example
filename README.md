@@ -1,6 +1,10 @@
 # node-passport-example
 
-Simple app to demonstrate authentication in a Node app using Passport.js
+This Node application makes use of Express, Mongoose and Passport to demonstrate authentication using the `passport-local` authentication strategy.
+
+The passport configuration settings can be found in `services/passport.js`.
+
+Note: This does not include the `passport-local-mongoose` module. It is a custom implementation of the `passport-local` module.
 
 ## Quick start
 
