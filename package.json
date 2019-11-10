@@ -1,7 +1,7 @@
 {
   "name": "node-passport-example",
   "version": "1.0.0",
-  "description": "",
+  "description": "Simple app to demonstrate authentication in a Node app using Passport.js",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -13,25 +13,26 @@
     "url": "git+https://github.com/sidsbrmnn/node-passport-example.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Siddharth Subramanian <sidsbrmnn@gmail.com> (sidsbrmnn.github.io)",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/sidsbrmnn/node-passport-example/issues"
   },
   "homepage": "https://github.com/sidsbrmnn/node-passport-example#readme",
-  "devDependencies": {
-    "eslint": "^6.3.0",
-    "nodemon": "^1.19.1"
-  },
   "dependencies": {
     "bcrypt": "^3.0.6",
     "connect-ensure-login": "^0.1.1",
-    "dotenv": "^8.1.0",
+    "connect-flash": "^0.1.1",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "express-session": "^1.16.2",
-    "mongoose": "^5.6.11",
+    "express-session": "^1.17.0",
+    "mongoose": "^5.7.9",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "pug": "^2.0.4"
+  },
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "nodemon": "^1.19.4"
   }
 }
