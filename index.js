@@ -1,7 +1,8 @@
 // Requires
 require('dotenv').config();
+const flash = require('connect-flash');
 const express = require('express');
-const expressSession = require('express-session');
+const session = require('express-session');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const path = require('path');
@@ -9,18 +10,18 @@ const path = require('path');
 const app = express();
 
 // Configs
-const PORT = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 const MONGODB_URI =
   process.env.MONGODB_URI || 'mongodb://localhost/node-passport';
-const SESSION_CONFIG = {
-  secret: process.env.SESSION_SECRET || 'someSecret',
-  resave: true,
-  saveUninitialized: true
-};
 
 // Mongoose connection
 mongoose
-  .connect(MONGODB_URI, { useNewUrlParser: true, useFindAndModify: false })
+  .connect(MONGODB_URI, {
+    useCreateIndex: true,
+    useFindAndModify: false,
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
   .then(() => {
     console.log('Connected to MongoDB');
   });
@@ -35,7 +36,14 @@ app.set('view engine', 'pug');
 // Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(expressSession(SESSION_CONFIG));
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || 'someSecret',
+    resave: true,
+    saveUninitialized: true
+  })
+);
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use((req, res, next) => {
@@ -48,6 +56,6 @@ app.use((req, res, next) => {
 app.use('/', require('./routes'));
 
 // App listening
-app.listen(PORT, () => {
-  console.log('Listening on port', PORT);
+app.listen(port, () => {
+  console.log('Listening on port', port);
 });
