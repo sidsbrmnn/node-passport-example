@@ -20,7 +20,7 @@ mongoose
     useCreateIndex: true,
     useFindAndModify: false,
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
   })
   .then(() => {
     console.log('Connected to MongoDB');
@@ -40,8 +40,8 @@ app.use(
   session({
     secret: process.env.SESSION_SECRET || 'someSecret',
     resave: true,
-    saveUninitialized: true
-  })
+    saveUninitialized: true,
+  }),
 );
 app.use(flash());
 app.use(passport.initialize());
